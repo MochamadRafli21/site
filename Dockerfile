@@ -1,4 +1,4 @@
-FROM nginx:latest-alpine
+FROM nginx:alpine
 RUN apk update
 RUN apk add gettext-libs
 RUN apk add gettext
