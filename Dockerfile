@@ -1,6 +1,8 @@
+ARG PORT
+ARG HOST
+
 FROM nginx:alpine
-RUN apk update
-RUN apk add gettext-libs
-RUN apk add gettext
-RUN envsubst < /default.conf > /default_temp.conf
-COPY /default_temp.conf /etc/nginx/conf.d/default_temp.conf
+COPY /default.conf /etc/nginx/conf.d/default.conf
+ENV PORT=${PORT}
+ENV HOST=${HOST}
+CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && sed -i -e 's/$HOST/'"$HOST"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
