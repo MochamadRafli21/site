@@ -1,6 +1,5 @@
 ARG PORT
 ARG DESTINATION
-ARG Domain
 FROM nginx:alpine
 COPY /default.conf /etc/nginx/conf.d/default.conf
 ENV PORT $PORT
